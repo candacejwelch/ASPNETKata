@@ -96,6 +96,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.Example.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
