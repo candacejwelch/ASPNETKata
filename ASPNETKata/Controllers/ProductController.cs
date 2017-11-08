@@ -21,7 +21,7 @@ namespace ASPNETKata.Controllers
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                var list = conn.Query<Product>("select * from product");
+                var list = conn.Query<Product>("select * from product ORDER BY ProductId DESC");
                 return View(list);
             }
         }
@@ -42,22 +42,50 @@ namespace ASPNETKata.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
+            var prod = new Product
             {
-                // TODO: Add insert logic here
+                Name = collection["Name"],
+            //    //ProductId = int.Parse(collection["ProductId"])
 
-                return RedirectToAction("Index");
-            }
-            catch
+            };
+            //var name = collection["Name"];
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (var conn = new MySqlConnection(connectionString))
             {
-                return View();
+                conn.Open();
+                try
+                {
+                    conn.Execute("INSERT into product (Name) values (@Name)", prod);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return View();
+                }
             }
+            
         }
 
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            //var prod = new Product();
+            //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            //using (var conn = new MySqlConnection(connectionString))
+            //{
+            //    conn.Open();
+            //    try
+            //    {
+            //        conn.Execute("update product set name = @name where ProductID = @id",
+            //        new { id = prod.ProductId, name = prod.Name });
+            //        return RedirectToAction("Index");
+            //    }
+            //    catch
+            //    {
+                   return View();
+            //    }
+            //}
         }
 
         // POST: Product/Edit/5
