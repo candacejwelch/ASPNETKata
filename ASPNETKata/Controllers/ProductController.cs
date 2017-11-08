@@ -9,11 +9,15 @@ using System.Web.Mvc;
 using ASPNETKata.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
+using Microsoft.Practices.Unity;
+using SqlIntro;
 
 namespace ASPNETKata.Controllers
 {
     public class ProductController : Controller
     {
+        [Dependency]
+        public IProductRepository ProductRepository { get; set; }
         // GET: Product
         public ActionResult Index()
         {
@@ -29,7 +33,22 @@ namespace ASPNETKata.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+         
+
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                try
+                {
+                    conn.Execute("select * product where ProductID = @id", id);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
         }
 
         // GET: Product/Create

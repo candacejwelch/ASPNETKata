@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETKata", "ASPNETKata\AS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETKata.Tests", "ASPNETKata.Tests\ASPNETKata.Tests.csproj", "{DB6204E2-4A55-453E-8885-9447F5AF361C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlIntro", "..\SqlIntro\SqlIntro\SqlIntro.csproj", "{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DB6204E2-4A55-453E-8885-9447F5AF361C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB6204E2-4A55-453E-8885-9447F5AF361C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB6204E2-4A55-453E-8885-9447F5AF361C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
