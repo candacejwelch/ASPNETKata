@@ -77,10 +77,9 @@ namespace ASPNETKata.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            var prod = new Product
-            {
-                Name = collection["Name"]
-            };
+
+            var name = collection["Name"];
+            
             var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             using (var conn = new MySqlConnection(connectionString))
             {
@@ -88,7 +87,7 @@ namespace ASPNETKata.Controllers
                 try
                 {
                     conn.Execute("update product set name = @name where ProductID = @id",
-                        new {id, name = prod.Name});
+                        new {id, name});
                     return RedirectToAction("Index");
                 }
                 catch
