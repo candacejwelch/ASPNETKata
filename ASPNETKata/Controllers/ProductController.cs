@@ -45,10 +45,9 @@ namespace ASPNETKata.Controllers
             var prod = new Product
             {
                 Name = collection["Name"],
-            //    //ProductId = int.Parse(collection["ProductId"])
-
+                //ProductId = int.Parse(collection["ProductId"])
             };
-            //var name = collection["Name"];
+            
             var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             using (var conn = new MySqlConnection(connectionString))
             {
@@ -70,43 +69,44 @@ namespace ASPNETKata.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            //var prod = new Product();
-            //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-            //using (var conn = new MySqlConnection(connectionString))
-            //{
-            //    conn.Open();
-            //    try
-            //    {
-            //        conn.Execute("update product set name = @name where ProductID = @id",
-            //        new { id = prod.ProductId, name = prod.Name });
-            //        return RedirectToAction("Index");
-            //    }
-            //    catch
-            //    {
-                   return View();
-            //    }
-            //}
+
+            return View();
         }
 
         // POST: Product/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            var prod = new Product
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
+                Name = collection["Name"]
+            };
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (var conn = new MySqlConnection(connectionString))
             {
-                return View();
+                conn.Open();
+                try
+                {
+                    conn.Execute("update product set name = @name where ProductID = @id",
+                        new {id, name = prod.Name});
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
         }
 
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
         {
+            
+            //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            //using (var conn = new MySqlConnection(connectionString))
+            //{
+            //    conn.Query("select (Name, ProductId) from product where ProductID = @id")
+            //}
             return View();
         }
 
@@ -114,15 +114,20 @@ namespace ASPNETKata.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            var productId = id;
+            var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            using (var conn = new MySqlConnection(connectionString))
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                conn.Open();
+                try
+                {
+                    conn.Execute("delete from product where ProductID = @id", new { id = productId });
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
         }
     }
