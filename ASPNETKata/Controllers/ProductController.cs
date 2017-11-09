@@ -37,7 +37,7 @@ namespace ASPNETKata.Controllers
         //GET: Product/Details/5
         public ActionResult Details(int id)
         {
-
+            
 
             //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             //using (var conn = new MySqlConnection(connectionString))
@@ -50,7 +50,8 @@ namespace ASPNETKata.Controllers
             //    }
             //    catch
             //    {
-            return View();
+            var list = ProductRepository.GetDetails(id);
+            return View(list);
             //    }
             //}
         }

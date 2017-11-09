@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Dapper;
 
 namespace SqlIntro
@@ -20,6 +21,11 @@ namespace SqlIntro
         public IEnumerable<Product> GetProducts()
         {
             return conn.Query<Product>("select * from product");
+        }
+
+        public Product GetDetails(int productId)
+        {
+            return conn.Query<Product>("select * from product where ProductID = @id", new { id = productId }).FirstOrDefault();
         }
 
         /// <summary>
