@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETKata", "ASPNETKata\AS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETKata.Tests", "ASPNETKata.Tests\ASPNETKata.Tests.csproj", "{DB6204E2-4A55-453E-8885-9447F5AF361C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlIntro", "..\SqlIntro\SqlIntro\SqlIntro.csproj", "{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlIntro", "SqlIntro\SqlIntro.csproj", "{7E23D75B-C907-4FD0-BBCF-1E2D51A3B8B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -261,7 +261,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SqlIntro\SqlIntro\SqlIntro.csproj">
+    <ProjectReference Include="..\SqlIntro\SqlIntro.csproj">
       <Project>{7e23d75b-c907-4fd0-bbcf-1e2d51a3b8b5}</Project>
       <Name>SqlIntro</Name>
     </ProjectReference>
