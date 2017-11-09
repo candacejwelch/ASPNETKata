@@ -47,11 +47,7 @@ namespace SqlIntro
         /// <param name="prod"></param>
         public void InsertProduct(Product prod)
         {
-                conn.Execute("INSERT into product (Name, ProductNumber, MakeFlag, " +
-                             "FinishedGoodsFlag, Color, SafetyStockLevel, ReorderPoint, DaysToManufacture," +
-                             "StandardCost, ModifiedDate, SellStartDate, ListPrice, RowGuid) values(@Name, @ProductNumber, @MakeFlag," +
-                             "@FinishedGoodsFlag, @Color, @SafetyStockLevel, @ReorderPoint, @DaysToManufacture, @StandardCost," +
-                             "@ModifiedDate, @SellStartDate, @ListPrice, @RowGuid)", prod);
+                conn.Execute("INSERT into product (Name) values(@Name)", prod);
         }
 
         public IEnumerable<Product> LeftJoin()

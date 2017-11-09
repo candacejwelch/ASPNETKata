@@ -83,10 +83,20 @@ namespace ASPNETKata.Controllers
             //    catch (Exception e)
             //    {
             //        Console.WriteLine(e);
-                   return View();
+
+            try
+            {
+                ProductRepository.InsertProduct(product);
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
             //    }
             //}
-            
+
         }
 
         // GET: Product/Edit/5
@@ -101,8 +111,8 @@ namespace ASPNETKata.Controllers
         public ActionResult Edit(int id, Product product)
         {
 
-            //var name = collection["Name"];
-            
+            product.ProductId = id;
+
             //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             //using (var conn = new MySqlConnection(connectionString))
             //{
@@ -115,7 +125,15 @@ namespace ASPNETKata.Controllers
             //    }
             //    catch
             //    {
-                   return View();
+            try
+            {
+                ProductRepository.UpdateProduct(product);
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             //    }
             //}
         }
@@ -129,6 +147,7 @@ namespace ASPNETKata.Controllers
             //{
             //    conn.Query("select (Name, ProductId) from product where ProductID = @id")
             //}
+            
             return View();
         }
 
@@ -136,7 +155,6 @@ namespace ASPNETKata.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Product product)
         {
-            //var productId = id;
             //var connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             //using (var conn = new MySqlConnection(connectionString))
             //{
@@ -148,8 +166,15 @@ namespace ASPNETKata.Controllers
             //    }
             //    catch
             //    {
-                    return View();
-            //    }
+            try
+            {
+                ProductRepository.DeleteProduct(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            //    }
             //}
         }
     }
