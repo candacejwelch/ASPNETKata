@@ -20,7 +20,7 @@ namespace SqlIntro
         /// <returns></returns>
         public IEnumerable<Product> GetProducts()
         {
-            return conn.Query<Product>("select * from product");
+            return conn.Query<Product>("select * from product ORDER BY ProductId DESC");
         }
 
         public Product GetDetails(int productId)
